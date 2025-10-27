@@ -6,6 +6,46 @@
 
 Professional air freight landing page for Emex Express USA operations, featuring a comprehensive multi-step booking system for air cargo shipments.
 
+## 🚀 Deployment Options
+
+### Option 1: Coolify (Empfohlen)
+
+#### Vorbereitung
+- ✅ Repository: `https://github.com/smc1992/emexexpress-usa`
+- ✅ Dockerfile und nginx.conf vorhanden
+- ✅ Alle Dateien bereit
+
+#### Coolify Setup:
+1. **Neues Projekt erstellen:**
+   - Name: `emexexpress-usa`
+   - Source: GitHub
+   - Repository: `https://github.com/smc1992/emexexpress-usa`
+   - Branch: `main`
+
+2. **Build Settings:**
+   - Build Pack: `Docker`
+   - Dockerfile Path: `./Dockerfile`
+
+3. **Environment Variables:**
+   ```env
+   DOMAIN=usa.emexexpress.de
+   ```
+
+4. **Domains:**
+   - Domain: `usa.emexexpress.de`
+   - SSL: Enable (Let's Encrypt)
+
+5. **Deploy starten**
+
+### Option 2: GitHub Pages
+
+#### GitHub Pages Setup:
+1. Repository Settings → Pages
+2. Source: Deploy from a branch
+3. Branch: main → / (root)
+4. Custom domain: `usa.emexexpress.de`
+5. DNS: CNAME `usa` → `smc1992.github.io`
+
 ## ✨ Features
 
 ### 🎯 Core Features

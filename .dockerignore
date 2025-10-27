@@ -1,0 +1,15 @@
+# Git files
+.git
+.gitignore
+
+# Documentation
+README.md
+
+# Docker files
+Dockerfile
+.dockerignore
+nginx.conf
+
+# Development files
+*.log
+.DS_Store

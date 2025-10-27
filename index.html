@@ -1039,15 +1039,33 @@
                                                 </select>
                                             </div>
 
-                                            <!-- Piece Group 1 (Main) -->
+                                            <!-- Shipment Dimensions & Weight Units -->
                                             <div class="col-md-12 mt-4">
-                                                <h5>Pieces</h5>
-                                                <div class="piece-row">
-                                                    <input type="number" name="piece_number_1" class="form-control" placeholder="#" style="max-width: 60px;">
-                                                    <input type="text" name="length_1" class="form-control" placeholder="Length">
-                                                    <input type="text" name="width_1" class="form-control" placeholder="Width">
-                                                    <input type="text" name="height_1" class="form-control" placeholder="Height">
-                                                    <input type="text" name="weight_1" class="form-control" placeholder="Weight">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <h5 class="mb-0">Shipment Details</h5>
+                                                    <div class="d-flex gap-3">
+                                                        <div class="btn-group btn-group-sm" role="group">
+                                                            <input type="radio" class="btn-check" name="dimension_unit" id="unit_cm" value="cm" checked autocomplete="off">
+                                                            <label class="btn btn-outline-primary" for="unit_cm">cm</label>
+                                                            <input type="radio" class="btn-check" name="dimension_unit" id="unit_in" value="in" autocomplete="off">
+                                                            <label class="btn btn-outline-primary" for="unit_in">in</label>
+                                                        </div>
+                                                        <div class="btn-group btn-group-sm" role="group">
+                                                            <input type="radio" class="btn-check" name="weight_unit" id="unit_kg" value="kg" checked autocomplete="off">
+                                                            <label class="btn btn-outline-primary" for="unit_kg">kg</label>
+                                                            <input type="radio" class="btn-check" name="weight_unit" id="unit_lb" value="lb" autocomplete="off">
+                                                            <label class="btn btn-outline-primary" for="unit_lb">lb</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Piece Group 1 -->
+                                                <div class="piece-row" data-group="1">
+                                                    <input type="number" name="pieces_1" id="pieces_1" class="form-control piece-input" placeholder="Pieces" min="1" max="300" style="max-width: 80px;" value="1">
+                                                    <input type="number" name="length_1" id="length_1" class="form-control dimension-input" placeholder="Length" min="1" max="400" step="0.1">
+                                                    <input type="number" name="width_1" id="width_1" class="form-control dimension-input" placeholder="Width" min="1" max="244" step="0.1">
+                                                    <input type="number" name="height_1" id="height_1" class="form-control dimension-input" placeholder="Height" min="1" max="244" step="0.1">
+                                                    <input type="number" name="weight_1" id="weight_1" class="form-control weight-input" placeholder="Weight" min="0.1" max="15000" step="0.1">
                                                     <div class="d-flex flex-column gap-1" style="min-width: 100px;">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="weight_type_1" id="total_1" value="Total" checked>
@@ -1082,6 +1100,36 @@
                                                 <button type="button" id="add-piece-group" class="btn-main btn-line">
                                                     <i class="fas fa-plus me-2"></i>Add another piece group
                                                 </button>
+                                            </div>
+
+                                            <!-- Shipment Calculation Results -->
+                                            <div class="col-md-12 mt-4">
+                                                <div class="card bg-light border-0">
+                                                    <div class="card-body">
+                                                        <div class="row g-3 text-center">
+                                                            <div class="col-6 col-md-2">
+                                                                <small class="text-muted d-block">Total No. of Pieces</small>
+                                                                <strong id="calc-total-pieces" class="fs-5">0</strong>
+                                                            </div>
+                                                            <div class="col-6 col-md-2">
+                                                                <small class="text-muted d-block">Total Volume</small>
+                                                                <strong id="calc-total-volume" class="fs-5">0 m³</strong>
+                                                            </div>
+                                                            <div class="col-6 col-md-2">
+                                                                <small class="text-muted d-block">Total Weight</small>
+                                                                <strong id="calc-total-weight" class="fs-5">0 kg</strong>
+                                                            </div>
+                                                            <div class="col-6 col-md-3">
+                                                                <small class="text-muted d-block">Density Ratio</small>
+                                                                <strong id="calc-density-ratio" class="fs-5">1 : 0</strong>
+                                                            </div>
+                                                            <div class="col-12 col-md-3">
+                                                                <small class="text-muted d-block">Chargeable Weight</small>
+                                                                <strong id="calc-chargeable-weight" class="fs-5 text-primary">0 kg</strong>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-6">
@@ -1614,12 +1662,12 @@
             function createPieceGroupHtml(groupNumber) {
                 return `
                     <div class="piece-group mb-3">
-                        <div class="piece-row">
-                            <input type="number" name="piece_number_${groupNumber}" class="form-control" placeholder="#" style="max-width: 60px;">
-                            <input type="text" name="length_${groupNumber}" class="form-control" placeholder="Length">
-                            <input type="text" name="width_${groupNumber}" class="form-control" placeholder="Width">
-                            <input type="text" name="height_${groupNumber}" class="form-control" placeholder="Height">
-                            <input type="text" name="weight_${groupNumber}" class="form-control" placeholder="Weight">
+                        <div class="piece-row" data-group="${groupNumber}">
+                            <input type="number" name="pieces_${groupNumber}" id="pieces_${groupNumber}" class="form-control piece-input" placeholder="Pieces" min="1" max="300" style="max-width: 80px;" value="1">
+                            <input type="number" name="length_${groupNumber}" id="length_${groupNumber}" class="form-control dimension-input" placeholder="Length" min="1" max="400" step="0.1">
+                            <input type="number" name="width_${groupNumber}" id="width_${groupNumber}" class="form-control dimension-input" placeholder="Width" min="1" max="244" step="0.1">
+                            <input type="number" name="height_${groupNumber}" id="height_${groupNumber}" class="form-control dimension-input" placeholder="Height" min="1" max="244" step="0.1">
+                            <input type="number" name="weight_${groupNumber}" id="weight_${groupNumber}" class="form-control weight-input" placeholder="Weight" min="0.1" max="15000" step="0.1">
                             <div class="d-flex flex-column gap-1" style="min-width: 100px;">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="weight_type_${groupNumber}" id="total_${groupNumber}" value="Total" checked>
@@ -1647,6 +1695,174 @@
                     </div>
                 `;
             }
+
+            // Shipment Calculator Functionality
+            const CM_TO_IN = 0.393701;
+            const IN_TO_CM = 2.54;
+            const KG_TO_LB = 2.20462;
+            const LB_TO_KG = 0.453592;
+            const VOLUMETRIC_DIVISOR = 6000; // Standard air freight: 1 cbm = 167 kg, so 1,000,000 cm³ / 6000 = 166.67 kg
+
+            let currentDimensionUnit = 'cm';
+            let currentWeightUnit = 'kg';
+
+            // Unit conversion listeners
+            document.querySelectorAll('input[name="dimension_unit"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const newUnit = this.value;
+                    convertAllDimensions(currentDimensionUnit, newUnit);
+                    currentDimensionUnit = newUnit;
+                    updateMaxValues();
+                    calculateShipment();
+                });
+            });
+
+            document.querySelectorAll('input[name="weight_unit"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const newUnit = this.value;
+                    convertAllWeights(currentWeightUnit, newUnit);
+                    currentWeightUnit = newUnit;
+                    updateMaxValues();
+                    calculateShipment();
+                });
+            });
+
+            // Convert dimensions
+            function convertAllDimensions(fromUnit, toUnit) {
+                if (fromUnit === toUnit) return;
+                
+                const conversionFactor = (fromUnit === 'cm') ? CM_TO_IN : IN_TO_CM;
+                document.querySelectorAll('.dimension-input').forEach(input => {
+                    if (input.value) {
+                        const newValue = (parseFloat(input.value) * conversionFactor).toFixed(2);
+                        input.value = newValue;
+                    }
+                });
+            }
+
+            // Convert weights
+            function convertAllWeights(fromUnit, toUnit) {
+                if (fromUnit === toUnit) return;
+                
+                const conversionFactor = (fromUnit === 'kg') ? KG_TO_LB : LB_TO_KG;
+                document.querySelectorAll('.weight-input').forEach(input => {
+                    if (input.value) {
+                        const newValue = (parseFloat(input.value) * conversionFactor).toFixed(2);
+                        input.value = newValue;
+                    }
+                });
+            }
+
+            // Update max values based on current unit
+            function updateMaxValues() {
+                const dimensionInputs = document.querySelectorAll('.dimension-input');
+                const weightInputs = document.querySelectorAll('.weight-input');
+
+                if (currentDimensionUnit === 'cm') {
+                    dimensionInputs.forEach(input => {
+                        if (input.placeholder.includes('Length')) input.max = 400;
+                        else input.max = 244;
+                    });
+                } else {
+                    dimensionInputs.forEach(input => {
+                        if (input.placeholder.includes('Length')) input.max = (400 * CM_TO_IN).toFixed(0);
+                        else input.max = (244 * CM_TO_IN).toFixed(0);
+                    });
+                }
+
+                if (currentWeightUnit === 'kg') {
+                    weightInputs.forEach(input => input.max = 15000);
+                } else {
+                    weightInputs.forEach(input => input.max = (15000 * KG_TO_LB).toFixed(0));
+                }
+            }
+
+            // Calculate shipment totals
+            function calculateShipment() {
+                let totalPieces = 0;
+                let totalVolumeCm3 = 0;
+                let totalWeightKg = 0;
+
+                // Get all piece rows
+                document.querySelectorAll('.piece-row').forEach(row => {
+                    const pieces = parseFloat(row.querySelector('.piece-input')?.value) || 0;
+                    const length = parseFloat(row.querySelector('[placeholder="Length"]')?.value) || 0;
+                    const width = parseFloat(row.querySelector('[placeholder="Width"]')?.value) || 0;
+                    const height = parseFloat(row.querySelector('[placeholder="Height"]')?.value) || 0;
+                    const weight = parseFloat(row.querySelector('.weight-input')?.value) || 0;
+                    const weightType = row.querySelector('input[type="radio"]:checked')?.value || 'Total';
+
+                    if (pieces > 0 && length > 0 && width > 0 && height > 0) {
+                        // Convert dimensions to cm if needed
+                        let lengthCm = currentDimensionUnit === 'cm' ? length : length * IN_TO_CM;
+                        let widthCm = currentDimensionUnit === 'cm' ? width : width * IN_TO_CM;
+                        let heightCm = currentDimensionUnit === 'cm' ? height : height * IN_TO_CM;
+
+                        // Calculate volume in cm³
+                        const volumePerPieceCm3 = lengthCm * widthCm * heightCm;
+                        totalVolumeCm3 += volumePerPieceCm3 * pieces;
+                        totalPieces += pieces;
+                    }
+
+                    if (weight > 0) {
+                        // Convert weight to kg if needed
+                        let weightKg = currentWeightUnit === 'kg' ? weight : weight * LB_TO_KG;
+                        
+                        if (weightType === 'Per Item') {
+                            totalWeightKg += weightKg * pieces;
+                        } else {
+                            totalWeightKg += weightKg;
+                        }
+                    }
+                });
+
+                // Convert volume to m³
+                const totalVolumeM3 = totalVolumeCm3 / 1000000;
+
+                // Calculate volumetric weight (kg)
+                const volumetricWeightKg = totalVolumeCm3 / VOLUMETRIC_DIVISOR;
+
+                // Chargeable weight is the higher of actual weight or volumetric weight
+                const chargeableWeightKg = Math.max(totalWeightKg, volumetricWeightKg);
+
+                // Calculate density ratio (actual weight : volumetric weight)
+                const densityRatio = volumetricWeightKg > 0 ? (totalWeightKg / volumetricWeightKg).toFixed(1) : 0;
+
+                // Update display
+                document.getElementById('calc-total-pieces').textContent = totalPieces;
+                document.getElementById('calc-total-volume').textContent = totalVolumeM3.toFixed(3) + ' m³';
+                
+                // Display weight in current unit
+                if (currentWeightUnit === 'kg') {
+                    document.getElementById('calc-total-weight').textContent = totalWeightKg.toFixed(2) + ' kg';
+                    document.getElementById('calc-chargeable-weight').textContent = chargeableWeightKg.toFixed(2) + ' kg';
+                } else {
+                    document.getElementById('calc-total-weight').textContent = (totalWeightKg * KG_TO_LB).toFixed(2) + ' lb';
+                    document.getElementById('calc-chargeable-weight').textContent = (chargeableWeightKg * KG_TO_LB).toFixed(2) + ' lb';
+                }
+                
+                document.getElementById('calc-density-ratio').textContent = '1 : ' + densityRatio;
+            }
+
+            // Add event listeners to all inputs
+            document.addEventListener('input', function(e) {
+                if (e.target.matches('.piece-input, .dimension-input, .weight-input')) {
+                    calculateShipment();
+                }
+            });
+
+            document.addEventListener('change', function(e) {
+                if (e.target.matches('input[type="radio"][name^="weight_type"]')) {
+                    calculateShipment();
+                }
+            });
+
+            // Recalculate when piece groups are added/removed
+            pieceGroupsContainer.addEventListener('DOMNodeInserted', calculateShipment);
+            pieceGroupsContainer.addEventListener('DOMNodeRemoved', calculateShipment);
+
+            // Initial calculation
+            calculateShipment();
         });
     </script>
 
