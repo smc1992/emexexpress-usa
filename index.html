@@ -1181,12 +1181,45 @@
                                                 <h3>Shipment Details</h3>
                                             </div>
                                             <div class="col-md-4">
-                                                <h5>Origin</h5>
-                                                <input type="text" name="origin" id="origin" class="form-control" placeholder="e.g. FRA, JFK, LAX" required>
+                                                <h5>Origin (Europe)</h5>
+                                                <select name="origin" id="origin" class="form-control" required>
+                                                    <option value="">Select Country</option>
+                                                    <option value="AT">Austria</option>
+                                                    <option value="BE">Belgium</option>
+                                                    <option value="BG">Bulgaria</option>
+                                                    <option value="HR">Croatia</option>
+                                                    <option value="CY">Cyprus</option>
+                                                    <option value="CZ">Czech Republic</option>
+                                                    <option value="DK">Denmark</option>
+                                                    <option value="EE">Estonia</option>
+                                                    <option value="FI">Finland</option>
+                                                    <option value="FR">France</option>
+                                                    <option value="DE">Germany</option>
+                                                    <option value="GR">Greece</option>
+                                                    <option value="HU">Hungary</option>
+                                                    <option value="IE">Ireland</option>
+                                                    <option value="IT">Italy</option>
+                                                    <option value="LV">Latvia</option>
+                                                    <option value="LT">Lithuania</option>
+                                                    <option value="LU">Luxembourg</option>
+                                                    <option value="MT">Malta</option>
+                                                    <option value="NL">Netherlands</option>
+                                                    <option value="PL">Poland</option>
+                                                    <option value="PT">Portugal</option>
+                                                    <option value="RO">Romania</option>
+                                                    <option value="SK">Slovakia</option>
+                                                    <option value="SI">Slovenia</option>
+                                                    <option value="ES">Spain</option>
+                                                    <option value="SE">Sweden</option>
+                                                    <option value="CH">Switzerland</option>
+                                                    <option value="GB">United Kingdom</option>
+                                                    <option value="NO">Norway</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <h5>Destination</h5>
-                                                <input type="text" name="destination" id="destination" class="form-control" placeholder="e.g. JFK, LAX, LHR" required>
+                                                <h5>Destination (Airport)</h5>
+                                                <input type="text" name="destination" id="destination" class="form-control airport-search" placeholder="Search airport (e.g. JFK, Los Angeles)" required list="airport-list" autocomplete="off">
+                                                <datalist id="airport-list"></datalist>
                                             </div>
                                             <div class="col-md-4">
                                                 <h5>Service</h5>
@@ -2039,6 +2072,80 @@
 
             // Initial calculation
             setTimeout(calculateShipment, 100);
+
+            // Airport Database with IATA codes
+            const airports = [
+                { code: 'JFK', name: 'John F. Kennedy International Airport', city: 'New York', country: 'USA' },
+                { code: 'LAX', name: 'Los Angeles International Airport', city: 'Los Angeles', country: 'USA' },
+                { code: 'ORD', name: "O'Hare International Airport", city: 'Chicago', country: 'USA' },
+                { code: 'DFW', name: 'Dallas/Fort Worth International Airport', city: 'Dallas', country: 'USA' },
+                { code: 'ATL', name: 'Hartsfield-Jackson Atlanta International Airport', city: 'Atlanta', country: 'USA' },
+                { code: 'MIA', name: 'Miami International Airport', city: 'Miami', country: 'USA' },
+                { code: 'SFO', name: 'San Francisco International Airport', city: 'San Francisco', country: 'USA' },
+                { code: 'LHR', name: 'London Heathrow Airport', city: 'London', country: 'UK' },
+                { code: 'CDG', name: 'Charles de Gaulle Airport', city: 'Paris', country: 'France' },
+                { code: 'FRA', name: 'Frankfurt Airport', city: 'Frankfurt', country: 'Germany' },
+                { code: 'AMS', name: 'Amsterdam Airport Schiphol', city: 'Amsterdam', country: 'Netherlands' },
+                { code: 'MAD', name: 'Adolfo Suárez Madrid-Barajas Airport', city: 'Madrid', country: 'Spain' },
+                { code: 'BCN', name: 'Barcelona-El Prat Airport', city: 'Barcelona', country: 'Spain' },
+                { code: 'FCO', name: 'Leonardo da Vinci-Fiumicino Airport', city: 'Rome', country: 'Italy' },
+                { code: 'MXP', name: 'Milan Malpensa Airport', city: 'Milan', country: 'Italy' },
+                { code: 'MUC', name: 'Munich Airport', city: 'Munich', country: 'Germany' },
+                { code: 'VIE', name: 'Vienna International Airport', city: 'Vienna', country: 'Austria' },
+                { code: 'ZRH', name: 'Zurich Airport', city: 'Zurich', country: 'Switzerland' },
+                { code: 'CPH', name: 'Copenhagen Airport', city: 'Copenhagen', country: 'Denmark' },
+                { code: 'ARN', name: 'Stockholm Arlanda Airport', city: 'Stockholm', country: 'Sweden' },
+                { code: 'OSL', name: 'Oslo Airport', city: 'Oslo', country: 'Norway' },
+                { code: 'HEL', name: 'Helsinki-Vantaa Airport', city: 'Helsinki', country: 'Finland' },
+                { code: 'DXB', name: 'Dubai International Airport', city: 'Dubai', country: 'UAE' },
+                { code: 'DOH', name: 'Hamad International Airport', city: 'Doha', country: 'Qatar' },
+                { code: 'SIN', name: 'Singapore Changi Airport', city: 'Singapore', country: 'Singapore' },
+                { code: 'HKG', name: 'Hong Kong International Airport', city: 'Hong Kong', country: 'Hong Kong' },
+                { code: 'NRT', name: 'Narita International Airport', city: 'Tokyo', country: 'Japan' },
+                { code: 'ICN', name: 'Incheon International Airport', city: 'Seoul', country: 'South Korea' },
+                { code: 'PEK', name: 'Beijing Capital International Airport', city: 'Beijing', country: 'China' },
+                { code: 'PVG', name: 'Shanghai Pudong International Airport', city: 'Shanghai', country: 'China' },
+                { code: 'SYD', name: 'Sydney Kingsford Smith Airport', city: 'Sydney', country: 'Australia' },
+                { code: 'MEL', name: 'Melbourne Airport', city: 'Melbourne', country: 'Australia' },
+                { code: 'YYZ', name: 'Toronto Pearson International Airport', city: 'Toronto', country: 'Canada' },
+                { code: 'YVR', name: 'Vancouver International Airport', city: 'Vancouver', country: 'Canada' }
+            ];
+
+            // Populate airport datalist
+            const airportList = document.getElementById('airport-list');
+            airports.forEach(airport => {
+                const option = document.createElement('option');
+                option.value = `${airport.code} - ${airport.city}, ${airport.country}`;
+                airportList.appendChild(option);
+            });
+
+            // Max values validation per piece
+            document.addEventListener('input', function(e) {
+                if (e.target.classList.contains('piece-input')) {
+                    const val = parseInt(e.target.value);
+                    if (val > 300) e.target.value = 300;
+                    if (val < 1) e.target.value = 1;
+                }
+                
+                if (e.target.classList.contains('dimension-input')) {
+                    const val = parseFloat(e.target.value);
+                    const isLength = e.target.placeholder.includes('Length');
+                    const maxCm = isLength ? 400 : 244;
+                    const maxIn = isLength ? 157 : 96;
+                    const max = currentDimensionUnit === 'cm' ? maxCm : maxIn;
+                    
+                    if (val > max) e.target.value = max;
+                    if (val < 0) e.target.value = 0;
+                }
+                
+                if (e.target.classList.contains('weight-input')) {
+                    const val = parseFloat(e.target.value);
+                    const max = currentWeightUnit === 'kg' ? 15000 : 33069;
+                    
+                    if (val > max) e.target.value = max;
+                    if (val < 0) e.target.value = 0;
+                }
+            });
         });
     </script>
 
