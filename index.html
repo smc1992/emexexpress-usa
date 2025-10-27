@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Emex Express - Transportation, Cargo & Logistics</title>
+    <link rel="icon" href="images/icon.webp" type="image/gif" sizes="16x16">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" >
+    <meta content="Emex Express - Transportation, Cargo & Logistics" name="description" >
+    <meta content="transportation, cargo, logistics, air freight, shipping, Emex Express, freight forwarding, customs clearance" name="keywords">
+    <meta content="" name="author">
+    <!-- CSS Files
+    ================================================== -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="css/plugins.css" rel="stylesheet" type="text/css" >
+    <link href="css/swiper.css" rel="stylesheet" type="text/css" >
+    <link href="css/swiper-custom-1.css" rel="stylesheet" type="text/css" >
+    <link href="css/style.css" rel="stylesheet" type="text/css" >
+    <link href="css/coloring.css" rel="stylesheet" type="text/css" >
+    <!-- Icon Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles for Piece Groups Mobile Optimization -->
+    <style>
+        /* Desktop: Felder nebeneinander */
+        .piece-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Mobile: Felder untereinander */
+        @media (max-width: 768px) {
+            .piece-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .piece-row input[type="text"],
+            .piece-row input[type="number"] {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 100% !important;
+            }
+            
+            /* Radio und Checkbox Container kompakt halten */
+            .piece-row > div {
+                width: auto !important;
+                max-width: 100% !important;
+                min-width: auto !important;
+                align-self: flex-start;
+            }
+            
+            .piece-row .form-check {
+                margin-bottom: 0.5rem;
+                display: inline-block;
+                margin-right: 1rem;
+            }
+            
+            .piece-row button {
+                width: 100% !important;
+                max-width: 200px !important;
+            }
+        }
+    </style>
+    
+    <!-- color scheme -->
+    <link id="colors" href="css/scheme-03.css" rel="stylesheet" type="text/css" >
+
+    <!-- Schema Markup for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Emex Express",
+      "alternateName": "Emex Air Freight",
+      "url": "https://usa.emexexpress.de",
+      "logo": "https://usa.emexexpress.de/LOGO-3.png",
+      "description": "Emex Express provides fast, secure, and dependable air freight solutions for businesses of every scale. From express shipments to consolidated air cargo, we connect major U.S. airports like Los Angeles, Chicago, and New York to leading trade destinations across Asia, Europe, and the Middle East.",
+      "foundingDate": "2020",
+      "industry": "Air Freight and Logistics",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+49-69-247455280",
+        "email": "info@emexexpress.de",
+        "contactType": "Customer Service",
+        "availableLanguage": ["English", "German"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "The Squaire 12",
+        "addressLocality": "Frankfurt",
+        "addressRegion": "Hesse",
+        "postalCode": "60549",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "50.0528",
+        "longitude": "8.5728"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Germany"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
+          "@type": "Country",
+          "name": "China"
+        },
+        {
+          "@type": "Country",
+          "name": "Japan"
+        }
+      ],
+      "serviceType": [
+        "Air Freight",
+        "Cargo Shipping",
+        "Logistics Services",
+        "Customs Clearance",
+        "International Shipping"
+      ],
+      "sameAs": [
+        "https://www.facebook.com/EMEXAirfreight/",
+        "https://www.instagram.com/emex.express/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Air Freight Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Door-to-Airport Service",
+              "description": "Seamless pickup and ground transportation to major airports worldwide"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Express Air Freight",
+              "description": "Priority air cargo services for time-sensitive shipments"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Consolidated Air Cargo",
+              "description": "Cost-effective consolidated shipments combining multiple smaller loads"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Customs Clearance & Documentation",
+              "description": "Expert customs brokerage services with comprehensive documentation handling"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Multi-Step Form Styles -->
+    <style>
+        .multi-step-form {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+        }
+
+        .step-progress .progress {
+            height: 8px;
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        .step-progress .progress-bar {
+            background: var(--secondary-color);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .step-indicators {
+            margin-top: 20px;
+        }
+
+        .step-indicator {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active .step-number {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .step-indicator:hover .step-number {
+            background: var(--secondary-color);
+            opacity: 0.8;
+            color: white;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 8px;
+            transition: all 0.3s ease;
+            border: 2px solid #555;
+        }
+
+        .step-label {
+            font-size: 12px;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-main {
+            background: var(--secondary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+            color: white;
+        }
+
+        .form-control {
+            border: 2px solid #555;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            background: #2a2a2a;
+            color: white;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255,107,53,0.25);
+            background: #2a2a2a;
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: #888;
+        }
+
+        select.form-control {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        }
+
+        .form-check-input {
+            background-color: #2a2a2a;
+            border: 2px solid #555;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .form-check-label {
+            color: #ccc;
+        }
+
+        h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h5 {
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+        }
+
+        .success {
+            background: #2a4d3a;
+            color: #90d4a8;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #4a7c59;
+        }
+
+        .error {
+            background: #4d2a2a;
+            color: #d49090;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #7c4a4a;
+        }
+
+        .text-end {
+            text-align: end !important;
+        }
+
+        .me-2 {
+            margin-right: 0.5rem !important;
+        }
+
+        /* Validation Styles */
+        .is-invalid {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+        }
+
+        .invalid-feedback {
+            display: block;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: #dc3545;
+        }
+
+        .validation-error {
+            background: #4d2a2a !important;
+            color: #d49090 !important;
+            border: 1px solid #7c4a4a !important;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .validation-error .fa-exclamation-triangle {
+            color: var(--secondary-color);
+        }
+
+        .alert {
+            position: relative;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.375rem;
+        }
+
+        .alert-danger {
+            color: #d49090;
+            background-color: #4d2a2a;
+            border-color: #7c4a4a;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <a href="#" id="back-to-top"></a>
+        
+        <!-- page preloader begin -->
+        <div id="de-loader"></div>
+        <!-- page preloader close -->
+
+        <!-- header begin -->
+        <header class="transparent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex sm-pt10">
+                            <div class="de-flex-col">
+                                <!-- logo begin -->
+                                <div id="logo">
+                                    <a href="index.html">
+                                        <img class="logo-main" src="LOGO-3.png" alt="" >
+                                        <img class="logo-scroll" src="LOGO-3.png" alt="" >
+                                        <img class="logo-mobile" src="LOGO-3.png" alt="" >
+                                    </a>
+                                </div>
+                                <!-- logo end -->
+                            </div>
+                            <div class="de-flex-col header-col-mid">
+                                <!-- mainemenu begin -->
+                                <ul id="mainmenu">
+                                    <li><a class="menu-item" href="#">Home</a></li>
+                                    <li><a class="menu-item" href="#section-tracking">Tracking</a></li>
+                                    <li><a class="menu-item" href="#section-services">Services</a></li>                                    
+                                    <li><a class="menu-item" href="#section-about">About Us</a></li>
+                                    <li><a class="menu-item" href="#section-why-choose-us">Why Choose Us</a></li>
+                                    <li><a class="menu-item" href="#section-faq">FAQ</a></li>
+                                </ul>
+                                <!-- mainmenu end -->
+                            </div>
+                            <div class="de-flex-col">
+                                <div class="menu_side_area">
+                                    <a href="#section-booking" class="btn-main btn-line fx-slide"><span>Book Shipment</span></a>
+                                    <span id="menu-btn"></span>
+                                </div>
+
+                                <div id="btn-extra">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+        <!-- content begin -->
+        <div class="no-bottom no-top" id="content">
+
+            <div id="top"></div>
+
+            <section id="section-intro" class="section-dark text-light no-top no-bottom relative overflow-hidden z-1000">
+                <div class="mh-800 relative">
+                    <div class="abs w-80 abs-middle z-2 w-100">
+                        <div class="container">
+                            <div class="row">
+                                <div class="spacer-double"></div>
+                                <div class="col-lg-12">
+                                    <div class="text-start">
+                                        <h1 class="fs-120 fs-sm-10vw mb-0 text-uppercase split">Delivering Cargo</h1>
+                                    </div>
+                                    <div class="text-lg-end">
+                                        <h1 class="fs-120 fs-sm-10vw text-uppercase mb-4 split" data-wow-delay="1s"> Always On-time</h1>
+                                    </div>                                    
+                                </div>
+
+                                <div class="col-lg-4 offset-lg-2">
+                                    <p>We provide reliable air cargo freight services, ensuring safe, timely delivery worldwide. From containers to bulk transport, our team manages every stage with precision and care.</p>
+
+
+                                    <a class="btn-main btn-line fx-slide" href="#section-booking"><span>Request Shipment</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper">
+                      <!-- Additional required wrapper -->
+                      <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="swiper-inner" data-bgimage="url(images/slider/c1.webp)">
+                                <div class="sw-overlay op-3"></div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="swiper-inner" data-bgimage="url(images/slider/c2.webp)">
+                                <div class="sw-overlay op-3"></div>
+                            </div>
+                        </div>
+                        <!-- Slides -->
+                      </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="section-tracking" class="bg-dark p-0">
+                <div class="container-fluid relative z-1">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="relative overflow-hidden">
+                                <img src="images/misc/s6.webp" class="w-100 wow scaleIn" data-wow-duration="2s" alt="Air freight cargo tracking and logistics management dashboard">
+                            </div>               
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="h-100 relative p-5 text-light">
+
+                                <div class="subtitle wow fadeInUp" data-wow-delay=".2s">Track Your Package</div>
+                                <h2 class="split" data-wow-delay=".4s">Quick Tracking</h2>
+
+                                <div class="row align-items-center justify-content-end">
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="hover-underline">
+                                            <input class="form-underline mb-0 no-border fs-18" id='order_id' name='order_id' placeholder="enter your order number here..." type='text'>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <a class="btn-main bg-white text-dark fx-slide w-100" href="track-result.html"><span>Track It</span></a>
+                                    </div>
+                                </div>
+
+                                <img src="images/misc/c2.webp" class="w-50 abs bottom-0 end-0 wow scaleIn" data-wow-duration="2s" alt="Cargo tracking and shipment monitoring interface illustration">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="section-services">
+                <div class="container">
+                    <div class="row g-4 align-items-center justify-content-between mb-2">
+                        <div class="col-lg-6">
+                            <div class="uptitle id-color wow fadeInUp">Our Services</div>
+                            <h2 class="split" >Services Tailored to You</h2>
+                            <p>Specialized air freight solutions designed for speed, reliability, and global reach. From express deliveries to customs clearance, we handle every aspect of air cargo logistics.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="hover overflow-hidden d-block">
+                                <div class="row g-0 align-items-end">
+                                    <div class="col-md-6">
+                                        <div class="relative overflow-hidden">
+                                            <h3 class="abs text-white fs-32 lh-1 p-4 top-0 start-0 z-3">01</h3>
+                                            <div class="sw-overlay z-2 op-2"></div>
+                                            <img src="images/services/1.webp" class="w-100 hover-scale-1-2" alt="Door-to-airport cargo pickup and transportation service illustration">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="p-40">
+                                            <h3 class="text-dark">Door-to-Airport Service</h3>
+                                            <p class="mb-0">Seamless pickup and ground transportation to major airports worldwide, ensuring your cargo reaches the right flight on time.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="hover overflow-hidden d-block">
+                                <div class="row g-0 align-items-end">
+                                    <div class="col-md-6">
+                                        <div class="relative overflow-hidden">
+                                            <h3 class="abs text-white fs-32 lh-1 p-4 top-0 start-0 z-3">02</h3>
+                                            <div class="sw-overlay z-2 op-2"></div>
+                                            <img src="images/services/2.webp" class="w-100 hover-scale-1-2" alt="Express air freight and priority cargo delivery service illustration">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="p-40">
+                                            <h3 class="text-dark">Express Air Freight</h3>
+                                            <p class="mb-0">Priority air cargo services for time-sensitive shipments, with guaranteed delivery windows and real-time flight tracking.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="hover overflow-hidden d-block">
+                                <div class="row g-0 align-items-end">
+                                    <div class="col-sm-6">
+                                        <div class="p-40">
+                                            <h3 class="text-dark">Consolidated Air Cargo</h3>
+                                            <p class="mb-0">Cost-effective consolidated shipments combining multiple smaller loads into efficient air cargo containers for global delivery.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="relative overflow-hidden">
+                                            <h3 class="abs text-white fs-32 lh-1 p-4 top-0 start-0 z-3">03</h3>
+                                            <div class="sw-overlay z-2 op-2"></div>
+                                            <img src="images/services/3.webp" class="w-100 hover-scale-1-2" alt="Consolidated air cargo and bulk shipment service illustration">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="hover overflow-hidden d-block">
+                                <div class="row g-0 align-items-end">
+                                    <div class="col-sm-6">
+                                        <div class="p-40">
+                                            <h3 class="text-dark">Customs Clearance & Documentation</h3>
+                                            <p class="mb-0">Expert customs brokerage services with comprehensive documentation handling to ensure smooth international air cargo clearance.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="relative overflow-hidden">
+                                            <h3 class="abs text-white fs-32 lh-1 p-4 top-0 start-0 z-3">04</h3>
+                                            <div class="sw-overlay z-2 op-2"></div>
+                                            <img src="images/services/4.webp" class="w-100 hover-scale-1-2" alt="Customs clearance and international documentation service illustration">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </section>
+
+        <section class="p-0" aria-label="section">
+          <div class="d-flex lh-1">
+            <div class="de-marquee-list-1 text-uppercase">
+              <span class="fs-48 mx-3">Global Air Freight</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Fast Cargo Solutions</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Customs Made Simple</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Priority Air Shipping</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Door to Airport</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Safe Cargo Transit</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Worldwide Air Logistics</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+            </div>
+          </div>
+
+          <div class="d-flex lh-1">
+            <div class="de-marquee-list-2 text-uppercase op-6">
+              <span class="fs-48 mx-3">International Cargo Flights</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Express Parcel Service</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Hassle-Free Customs</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">On-Time Air Cargo</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Airport to Door</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Cargo Safety First</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Trusted Air Freight</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+            </div>
+          </div>
+
+          <div class="d-flex lh-1">
+            <div class="de-marquee-list-1 text-uppercase op-4">
+              <span class="fs-48 mx-3">Rapid Freight Network</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Cargo Express Lines</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Borderless Air Cargo</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Critical Cargo Support</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Seamless Air Delivery</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Reliable Cargo Handling</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Efficient Air Transport</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+            </div>
+          </div>
+
+          <div class="d-flex lh-1">
+            <div class="de-marquee-list-2 text-uppercase op-2">
+              <span class="fs-48 mx-3">Worldwide Cargo Flights</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Express Freight Service</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Easy Customs Process</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Urgent Air Delivery</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Airport to Warehouse</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Cargo Care Guaranteed</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+              <span class="fs-48 mx-3">Premium Air Logistics</span>
+              <img src="LOGO-3.png" class="w-60px pb-3" alt="Emex Express air freight and logistics company logo">
+            </div>
+          </div>
+        </section>
+
+        <section id="section-about" class="relative">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">About Us</div>
+                        <h2 class="split" data-wow-delay=".2s">Global Air Cargo Logistics You Can Trust</h2>
+
+                        <p class="wow fadeInUp" data-wow-delay=".6s">
+                            Emex Express provides fast, secure, and dependable air freight solutions 
+                            for businesses of every scale. From express shipments to consolidated air cargo, 
+                            we connect major U.S. airports like Los Angeles, Chicago, and New York to leading 
+                            trade destinations across Asia, Europe, and the Middle East.
+                        </p>
+
+                        <div class="row g-4">
+                            <div class="col-md-5 wow fadeInUp" data-wow-delay=".8s">
+                                <ul class="ul-check text-dark">
+                                    <li>Express Air Freight</li>
+                                    <li>Consolidated Air Cargo</li>
+                                    <li>Oversized & Special Cargo</li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-5 wow fadeInUp" data-wow-delay=".8s">
+                                <ul class="ul-check text-dark">
+                                    <li>Customs Clearance</li>
+                                    <li>Airport-to-Door Delivery</li>
+                                    <li>Real-Time Flight Tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <img src="images/misc/c4.webp" class="w-100" alt="Air Cargo Logistics Service">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-why-choose-us" class="bg-dark text-light">
+                <div class="container">
+                    <div class="row g-4 mb-2 justify-content-center">
+                        <div class="col-lg-7 text-center">
+                            <div class="subtitle wow fadeInUp">Why Choose Us</div>
+                            <h2 class="split" data-wow-delay=".2s">Trusted Logistics Partner for Worldwide Shipping</h2>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp">
+                            <div class="relative">
+                                <i class="abs fs-40 p-4 bg-color icon_check text-light"></i>
+                                <div class="ps-100 ms-4">
+                                    <h4>Experienced Logistics</h4>
+                                    <p>Our specialists bring decades of experience in freight forwarding and customs clearance, ensuring smooth and efficient supply chain solutions worldwide.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 wow fadeInUp">
+                            <div class="relative">
+                                <i class="abs fs-40 p-4 bg-color icon_check text-light"></i>
+                                <div class="ps-100 ms-4">
+                                    <h4>Fast Delivery Commitment</h4>
+                                    <p>We understand the urgency of every shipment and act quickly. Optimized routes and tracking technology ensure timely deliveries without unnecessary delays.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 wow fadeInUp">
+                            <div class="relative">
+                                <i class="abs fs-40 p-4 bg-color icon_check text-light"></i>
+                                <div class="ps-100 ms-4">
+                                    <h4>Transparent Pricing Policy</h4>
+                                    <p>Our pricing is clear, competitive, and easy to understand for all clients. We guarantee no hidden charges and complete financial transparency every time.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 wow fadeInUp">
+                            <div class="relative">
+                                <i class="abs fs-40 p-4 bg-color icon_check text-light"></i>
+                                <div class="ps-100 ms-4">
+                                    <h4>Reliable Cargo Handling</h4>
+                                    <p>Every shipment is managed with precision and care to avoid risks. From packing to loading, we guarantee your cargo arrives safely and intact.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 wow fadeInUp">
+                            <div class="relative">
+                                <i class="abs fs-40 p-4 bg-color icon_check text-light"></i>
+                                <div class="ps-100 ms-4">
+                                    <h4>Comprehensive Solutions</h4>
+                                    <p>We cover every step of logistics including warehousing, distribution, and freight. Our integrated services make supply chain management simple and efficient.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 wow fadeInUp">
+                            <div class="relative">
+                                <i class="abs fs-40 p-4 bg-color icon_check text-light"></i>
+                                <div class="ps-100 ms-4">
+                                    <h4>Satisfaction Guarantee</h4>
+                                    <p>Your trust is our highest priority across all shipments. We back our services with responsive support and a strong customer satisfaction guarantee.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-faq">
+                <div class="container">
+
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="subtitle id-color">FAQ</div>
+                            <h2 class="split">
+                                Everything You Should Know About Our Services
+                            </h2>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="de-tab">
+                                <ul class="d-tab-nav mb-4">
+                                    <li class="active-tab">Shipping & Delivery</li>
+                                    <li>Tracking & Support</li>
+                                    <li>Billing & Documentation</li>
+                                </ul>
+                                <ul class="d-tab-content">
+                                    <li>
+                                        <div class="accordion">
+                                            <div class="accordion-section">
+                                                <div class="accordion-section-title" data-tab="#accordion-a1">
+                                                    What services do you offer?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-a1">
+                                                    We provide air, sea, and land cargo shipping, customs clearance, freight forwarding, and last-mile delivery solutions.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-a2">
+                                                    How do I get started to get service?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-a2">
+                                                    Simply contact us or request a quote online. Our team will guide you through shipping options, documentation, and costs.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-a3">
+                                                    Do you handle international shipments?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-a3">
+                                                    Yes, we handle both domestic and international cargo, including customs brokerage and global freight forwarding.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-a4">
+                                                    What is included in the shipping process?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-a4">
+                                                    Our shipping process covers pickup, cargo handling, customs clearance, real-time tracking, and final delivery.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-a5">
+                                                    How long does shipping usually take?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-a5">
+                                                    Transit times depend on the route and mode of transport. Domestic shipping may take 1–5 days, while international cargo can range from 7–30 days.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="accordion">
+                                            <div class="accordion-section">
+                                                <div class="accordion-section-title" data-tab="#accordion-b1">
+                                                    How can I track my shipment?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-b1">
+                                                    You can track your package using our online tracking system with your shipment ID or booking number.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-b2">
+                                                    Do you provide real-time updates?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-b2">
+                                                    Yes, we provide real-time cargo updates via email, SMS, or our mobile app so you know your shipment status at all times.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-b3">
+                                                    What if my package is delayed?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-b3">
+                                                    In case of delays, our customer support team will notify you immediately and provide the next available shipping option.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-b4">
+                                                    Can I change the delivery address after booking?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-b4">
+                                                    Yes, address changes are possible before dispatch. Once shipped, changes may incur extra costs depending on the route.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-b5">
+                                                    Do you offer customer support 24/7?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-b5">
+                                                    Yes, our logistics support team is available 24/7 to assist with shipment inquiries, tracking, and urgent requests.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="accordion">
+                                            <div class="accordion-section">
+                                                <div class="accordion-section-title" data-tab="#accordion-c1">
+                                                    What payment methods do you accept?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-c1">
+                                                    We accept bank transfers, credit cards, PayPal, and corporate billing accounts for approved clients.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-c2">
+                                                    Do you provide shipping invoices?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-c2">
+                                                    Yes, every shipment includes a detailed invoice with freight charges, customs fees, and handling costs.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-c3">
+                                                    How do customs duties and taxes work?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-c3">
+                                                    Duties and taxes are calculated based on the destination country’s regulations. We assist with documentation and customs clearance.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-c4">
+                                                    Can I request a cost breakdown?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-c4">
+                                                    Absolutely. We provide a transparent cost breakdown for shipping, including freight, handling, and clearance charges.
+                                                </div>
+
+                                                <div class="accordion-section-title" data-tab="#accordion-c5">
+                                                    Do you offer credit terms for businesses?
+                                                </div>
+                                                <div class="accordion-section-content" id="accordion-c5">
+                                                    Yes, we provide flexible billing and credit terms for qualified business accounts upon approval.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-booking" class="relative">
+                <div class="container">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="text-center mb-5">
+                                <div class="subtitle wow fadeInUp">Request Shipment</div>
+                                <h2 class="split wow fadeInUp" data-wow-delay=".2s">Get Your Quote Today</h2>
+                                <p class="wow fadeInUp" data-wow-delay=".4s" style="color: #333; font-weight: 500;">Fill out our simple form and we'll provide you with a customized shipping solution for your cargo needs.</p>
+                            </div>
+
+                            <div class="multi-step-form">
+                                <!-- Progress Bar -->
+                                <div class="step-progress mb-4">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="step-indicators d-flex justify-content-between mt-2">
+                                        <div class="step-indicator active" data-step="1">
+                                            <div class="step-number">1</div>
+                                            <div class="step-label">Details</div>
+                                        </div>
+                                        <div class="step-indicator" data-step="2">
+                                            <div class="step-number">2</div>
+                                            <div class="step-label">Shipper</div>
+                                        </div>
+                                        <div class="step-indicator" data-step="3">
+                                            <div class="step-number">3</div>
+                                            <div class="step-label">Receiver</div>
+                                        </div>
+                                        <div class="step-indicator" data-step="4">
+                                            <div class="step-number">4</div>
+                                            <div class="step-label">Options</div>
+                                        </div>
+                                        <div class="step-indicator" data-step="5">
+                                            <div class="step-number">5</div>
+                                            <div class="step-label">Schedule</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form name="logisticsBookingForm" id="logistics_booking_form" class="position-relative z1000" method="post" action="booking.php">
+                                    <!-- Step 1: Shipment Details -->
+                                    <div class="form-step active" id="step-1">
+                                        <div class="row g-4 gy-2">
+                                            <div class="col-md-12">
+                                                <h3>Shipment Details</h3>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Origin</h5>
+                                                <input type="text" name="origin" id="origin" class="form-control" placeholder="e.g. FRA, JFK, LAX" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Destination</h5>
+                                                <input type="text" name="destination" id="destination" class="form-control" placeholder="e.g. JFK, LAX, LHR" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Service</h5>
+                                                <select name="service" id="service" class="form-control" required>
+                                                    <option value="">Select Service</option>
+                                                    <option value="General Cargo">General Cargo</option>
+                                                    <option value="Passive Temperature Control">Passive Temperature Control</option>
+                                                    <option value="Perishables">Perishables</option>
+                                                    <option value="Dangerous Goods">Dangerous Goods</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Type of Goods</h5>
+                                                <input type="text" name="goods_type" id="goods_type" class="form-control" placeholder="e.g. Electronics, Furniture">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Package Type</h5>
+                                                <select name="package_type" id="package_type" class="form-control">
+                                                    <option value="Box">Box</option>
+                                                    <option value="Pallet">Pallet</option>
+                                                    <option value="Container">Container</option>
+                                                    <option value="Loose Cargo">Loose Cargo</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Piece Group 1 (Main) -->
+                                            <div class="col-md-12 mt-4">
+                                                <h5>Pieces</h5>
+                                                <div class="piece-row">
+                                                    <input type="number" name="piece_number_1" class="form-control" placeholder="#" style="max-width: 60px;">
+                                                    <input type="text" name="length_1" class="form-control" placeholder="Length">
+                                                    <input type="text" name="width_1" class="form-control" placeholder="Width">
+                                                    <input type="text" name="height_1" class="form-control" placeholder="Height">
+                                                    <input type="text" name="weight_1" class="form-control" placeholder="Weight">
+                                                    <div class="d-flex flex-column gap-1" style="min-width: 100px;">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="weight_type_1" id="total_1" value="Total" checked>
+                                                            <label class="form-check-label" for="total_1">Total</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="weight_type_1" id="per_item_1" value="Per Item">
+                                                            <label class="form-check-label" for="per_item_1">Per Item</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column gap-1" style="min-width: 100px;">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="stackable_1" name="stackable_1" value="Yes">
+                                                            <label class="form-check-label" for="stackable_1">Stackable</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="turnable_1" name="turnable_1" value="Yes">
+                                                            <label class="form-check-label" for="turnable_1">Turnable</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dynamic Piece Groups Container -->
+                                        <div id="piece-groups-container" class="mt-3">
+                                            <!-- Additional piece groups will be added here -->
+                                        </div>
+
+                                        <div class="row g-4 gy-2">
+                                            <div class="col-md-12 text-center mt-3">
+                                                <button type="button" id="add-piece-group" class="btn-main btn-line">
+                                                    <i class="fas fa-plus me-2"></i>Add another piece group
+                                                </button>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <h5>Value of Goods (USD)</h5>
+                                                <input type="text" name="goods_value" id="goods_value" class="form-control" placeholder="e.g. 5000">
+                                            </div>
+
+                                        <div class="col-md-12 text-end mt-4">
+                                            <button type="button" class="btn-main next-step">Next</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 2: Shipper Information -->
+                                    <div class="form-step" id="step-2">
+                                        <div class="row g-4 gy-2">
+                                            <div class="col-md-12">
+                                                <h3>Shipper Information</h3>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Full Name / Company</h5>
+                                                <input type="text" name="shipper_name" id="shipper_name" class="form-control" placeholder="Shipper Name" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Email</h5>
+                                                <input type="email" name="shipper_email" id="shipper_email" class="form-control" placeholder="Email" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Phone</h5>
+                                                <input type="text" name="shipper_phone" id="shipper_phone" class="form-control" placeholder="Phone" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Address</h5>
+                                                <input type="text" name="shipper_address" id="shipper_address" class="form-control" placeholder="Shipper Address">
+                                            </div>
+                                            <div class="col-md-12 text-end mt-4">
+                                                <button type="button" class="btn-main prev-step me-2">Previous</button>
+                                                <button type="button" class="btn-main next-step">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 3: Receiver Information -->
+                                    <div class="form-step" id="step-3">
+                                        <div class="row g-4 gy-2">
+                                            <div class="col-md-12">
+                                                <h3>Receiver Information</h3>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Full Name / Company</h5>
+                                                <input type="text" name="receiver_name" id="receiver_name" class="form-control" placeholder="Receiver Name" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Email</h5>
+                                                <input type="email" name="receiver_email" id="receiver_email" class="form-control" placeholder="Email">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Phone</h5>
+                                                <input type="text" name="receiver_phone" id="receiver_phone" class="form-control" placeholder="Phone">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Delivery Address</h5>
+                                                <input type="text" name="receiver_address" id="receiver_address" class="form-control" placeholder="Delivery Address">
+                                            </div>
+                                            <div class="col-md-12 text-end mt-4">
+                                                <button type="button" class="btn-main prev-step me-2">Previous</button>
+                                                <button type="button" class="btn-main next-step">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 4: Logistics Options -->
+                                    <div class="form-step" id="step-4">
+                                        <div class="row g-4 gy-2">
+                                            <div class="col-md-12">
+                                                <h3>Logistics Options</h3>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Mode of Transport</h5>
+                                                <select name="transport_mode" id="transport_mode" class="form-control">
+                                                    <option value="Air">Air Freight</option>
+                                                    <option value="Truck">Truck</option>
+                                                    <option value="Sea">Sea</option>
+                                                    <option value="Rail">Rail</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Incoterms</h5>
+                                                <select name="incoterms" id="incoterms" class="form-control">
+                                                    <option value="EXW">EXW</option>
+                                                    <option value="FOB">FOB</option>
+                                                    <option value="CIF">CIF</option>
+                                                    <option value="DAP">DAP</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Delivery Speed</h5>
+                                                <select name="delivery_speed" id="delivery_speed" class="form-control">
+                                                    <option value="Standard">Standard</option>
+                                                    <option value="Express">Express</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Insurance</h5>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="insurance_yes" name="insurance" value="Yes" checked>
+                                                    <label class="form-check-label" for="insurance_yes">Yes</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="insurance_no" name="insurance" value="No">
+                                                    <label class="form-check-label" for="insurance_no">No</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <h5>Special Handling</h5>
+                                                <div class="d-flex flex-wrap gap-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="fragile" name="special[]" value="Fragile">
+                                                        <label class="form-check-label" for="fragile">Fragile</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="perishable" name="special[]" value="Perishable">
+                                                        <label class="form-check-label" for="perishable">Perishable</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="hazardous" name="special[]" value="Hazardous">
+                                                        <label class="form-check-label" for="hazardous">Hazardous</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="oversized" name="special[]" value="Oversized">
+                                                        <label class="form-check-label" for="oversized">Oversized</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-end mt-4">
+                                                <button type="button" class="btn-main prev-step me-2">Previous</button>
+                                                <button type="button" class="btn-main next-step">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 5: Schedule & Payment -->
+                                    <div class="form-step" id="step-5">
+                                        <div class="row g-4 gy-2">
+                                            <div class="col-md-12">
+                                                <h3>Schedule & Payment</h3>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Pickup Date</h5>
+                                                <input type="date" name="pickup_date" id="pickup_date" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Pickup Time</h5>
+                                                <input type="time" name="pickup_time" id="pickup_time" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Delivery Deadline</h5>
+                                                <input type="date" name="delivery_deadline" id="delivery_deadline" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Payment Method</h5>
+                                                <select name="payment_method" id="payment_method" class="form-control">
+                                                    <option value="Credit Card">Credit Card</option>
+                                                    <option value="Bank Transfer">Bank Transfer</option>
+                                                    <option value="Cash on Delivery">Cash on Delivery</option>
+                                                    <option value="Corporate Account">Corporate Account</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Billing Address</h5>
+                                                <input type="text" name="billing_address" id="billing_address" class="form-control" placeholder="Billing Address">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <h5>Additional Notes</h5>
+                                                <textarea name="notes" id="notes" class="form-control" placeholder="Enter any special instructions..."></textarea>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-check mt-2">
+                                                    <input class="form-check-input" type="checkbox" id="agree_terms" name="agree_terms" required>
+                                                    <label class="form-check-label" for="agree_terms">I agree to the Terms & Conditions</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-end mt-4">
+                                                <button type="button" class="btn-main prev-step me-2">Previous</button>
+                                                <button type="submit" class="btn-main">Request Quote</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div id="success_message" class='success mt-4'>
+                                    Your request has been sent successfully. We'll get back to you with a quote within 24 hours.
+                                </div>
+                                <div id="error_message" class='error mt-4'>
+                                    Sorry there was an error sending your form.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-color-2 text-light pt-50 pb-50">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-md-9">
+                            <h3 class="mb-0 fs-32 split">Ready to Ship Your Cargo Worldwide?</h3>
+                        </div>
+                        <div class="col-lg-3 text-lg-end">
+                            <a class="btn-main fx-slide btn-line wow fadeInRight" data-wow-delay=".2s" href="booking.html"><span>Book Shipment</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <!-- content close -->
+        
+        <!-- footer begin -->
+        <footer class="text-light section-dark">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <div class="col-md-6">
+                        <img src="LOGO-3.png" class="w-170px mb-2" alt="Emex Express air freight and logistics company logo">
+                        <div class="spacer-single"></div>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="widget">
+                                    <h5>Services</h5>
+                                    <ul>                                        
+                                        <li><a href="#section-services">Door-to-Airport Service</a></li>
+                                        <li><a href="#section-services">Express Air Freight</a></li>
+                                        <li><a href="#section-services">Consolidated Air Cargo</a></li>
+                                        <li><a href="#section-services">Rail Freight</a></li>
+                                        <li><a href="#section-about">Warehousing</a></li>
+                                        <li><a href="#section-services">Customs Clearance & Documentation</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="widget">
+                                    <h5>Company</h5>
+                                    <ul>                                        
+                                        <li><a href="#top">Home</a></li>
+                                        <li><a href="#section-about">Why Choose Us</a></li>
+                                        <li><a href="#section-why-choose-us">Our Team</a></li>
+                                        <li><a href="#section-why-choose-us">Why Choose Us</a></li>
+                                        <li><a href="#section-faq">FAQ</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="social-icons mb-sm-30 text-center">
+                            <a href="https://www.facebook.com/EMEXAirfreight/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/emex.express/profilecard/?igsh=MXZ2bmV3azNvZWZ3YQ%3D%3D" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/4969247455280" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2>Get in Touch</h2>
+                            <img src="images/ui/up-right-arrow.webp" class="w-60px op-5" alt="Contact and get in touch arrow icon">
+                        </div>
+
+                        <div class="widget">
+                            <div class="op-5 fs-15">Email</div>
+                            <h3>info@emexexpress.de</h3>
+
+                            <div class="spacer-20"></div>      
+
+                            <div class="op-5 fs-15">Phone</div>
+                            <h3>+49 69 247455280</h3>
+
+                            <div class="spacer-20"></div>
+
+                            <div class="op-5 fs-15">Office Location</div>
+                            <h3>The Squaire 12, Frankfurt Airport<br>60549 Frankfurt<br>Germany</h3>
+
+                            <div class="spacer-20"></div>
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            Copyright 2025 Emex Express by <a href="http://consulting-smc.de" target="_blank">SMC</a> | <a href="imprint.html">Imprint</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer close -->
+    </div>
+
+    <!-- overlay content begin -->
+    <div id="extra-wrap" class="text-light">
+        <div id="btn-close">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div id="extra-content">
+            <img src="LOGO-3.png" class="w-200px" alt="Emex Express air freight and logistics company logo">
+
+            <div class="spacer-30-line"></div>
+
+            <h5>Our Services</h5>
+            <ul class="ul-check">
+                <li>Trucking</li>
+                <li>Air Freight</li>
+                <li>Ship Freight</li>
+                <li>Rail Freight</li>
+                <li>Warehousing</li>
+                <li>Customs Brokerage</li>
+                <li>Last-Mile Delivery</li>
+                <li>Project Cargo</li>
+            </ul>
+
+            <div class="spacer-30-line"></div>
+
+            <h5>Contact Us</h5>
+            <div><i class="icofont-phone me-2 op-5"></i>+49 69 247455280</div>
+            <div><i class="icofont-location-pin me-2 op-5"></i>The Squaire 12, Frankfurt Airport, 60549 Frankfurt, Germany</div>
+            <div><i class="icofont-envelope me-2 op-5"></i>info@emexexpress.de</div>
+
+            <div class="spacer-30-line"></div>
+
+            <h5>About Us</h5>
+            <p>We are a trusted logistics and cargo solutions provider committed to delivering your goods safely, efficiently, and on time. With years of experience in freight forwarding, warehousing, and international shipping.</p>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/EMEXAirfreight/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/emex.express/profilecard/?igsh=MXZ2bmV3azNvZWZ3YQ%3D%3D" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/4969247455280" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- overlay content end -->
+
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="js/plugins.js"></script>
+    <script src="js/designesia.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/custom-swiper-1.js"></script>
+    <script src="js/custom-marquee.js"></script>
+
+    <!-- Multi-Step Form Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formSteps = document.querySelectorAll('.form-step');
+            const progressBar = document.querySelector('.progress-bar');
+            const stepIndicators = document.querySelectorAll('.step-indicator');
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            let currentStep = 1;
+
+            function updateProgress() {
+                const progress = (currentStep / 5) * 100;
+                progressBar.style.width = progress + '%';
+                progressBar.setAttribute('aria-valuenow', progress);
+            }
+
+            function updateStepIndicators() {
+                stepIndicators.forEach((indicator, index) => {
+                    if (index + 1 === currentStep) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+
+            function showStep(stepNumber) {
+                formSteps.forEach(step => {
+                    step.classList.remove('active');
+                });
+                document.getElementById('step-' + stepNumber).classList.add('active');
+                currentStep = stepNumber;
+                updateProgress();
+                updateStepIndicators();
+            }
+
+            function validateCurrentStep() {
+                const currentStepElement = document.getElementById('step-' + currentStep);
+                const requiredFields = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+                let isValid = true;
+                let firstInvalidField = null;
+
+                requiredFields.forEach(field => {
+                    // Entferne vorherige Fehleranzeigen
+                    field.classList.remove('is-invalid');
+                    const errorElement = field.parentNode.querySelector('.invalid-feedback');
+                    if (errorElement) {
+                        errorElement.remove();
+                    }
+
+                    // Prüfe ob Feld ausgefüllt ist
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('is-invalid');
+
+                        // Füge Fehler-Meldung hinzu
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'invalid-feedback';
+                        errorDiv.textContent = 'This field is required.';
+                        field.parentNode.appendChild(errorDiv);
+
+                        if (!firstInvalidField) {
+                            firstInvalidField = field;
+                        }
+                    }
+                });
+
+                // Fokussiere das erste ungültige Feld
+                if (firstInvalidField) {
+                    firstInvalidField.focus();
+                    firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
+                return isValid;
+            }
+
+            function showValidationError(message) {
+                // Entferne vorherige Fehlermeldungen
+                const existingError = document.querySelector('.validation-error');
+                if (existingError) {
+                    existingError.remove();
+                }
+
+                // Erstelle neue Fehlermeldung
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'validation-error alert alert-danger mt-3';
+                errorDiv.innerHTML = '<i class="fa fa-exclamation-triangle me-2"></i>' + message;
+                document.querySelector('.multi-step-form').prepend(errorDiv);
+
+                // Entferne die Meldung nach 3 Sekunden
+                setTimeout(() => {
+                    if (errorDiv.parentNode) {
+                        errorDiv.remove();
+                    }
+                }, 3000);
+            }
+
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (validateCurrentStep()) {
+                        if (currentStep < 5) {
+                            showStep(currentStep + 1);
+                        }
+                    } else {
+                        showValidationError('Please fill in all required fields before proceeding.');
+                    }
+                });
+            });
+
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (currentStep > 1) {
+                        showStep(currentStep - 1);
+                    }
+                });
+            });
+
+            stepIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    const targetStep = index + 1;
+
+                    // Wenn der Ziel-Schritt größer als der aktuelle ist, validiere zuerst
+                    if (targetStep > currentStep) {
+                        if (validateCurrentStep()) {
+                            showStep(targetStep);
+                        } else {
+                            showValidationError('Please fill in all required fields before jumping to this step.');
+                        }
+                    } else {
+                        // Für vorherige Schritte kann man immer springen
+                        showStep(targetStep);
+                    }
+                });
+            });
+
+            // Live-Validierung: Entferne Fehleranzeige wenn Feld ausgefüllt wird
+            document.addEventListener('input', function(e) {
+                if (e.target.matches('input[required], select[required], textarea[required]')) {
+                    if (e.target.value.trim()) {
+                        e.target.classList.remove('is-invalid');
+                        const errorElement = e.target.parentNode.querySelector('.invalid-feedback');
+                        if (errorElement) {
+                            errorElement.remove();
+                        }
+                    }
+                }
+            });
+
+            // Initialize
+            showStep(1);
+        });
+
+        // Dynamic Piece Groups Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            let groupCounter = 1;
+
+            const addPieceGroupBtn = document.getElementById('add-piece-group');
+            const pieceGroupsContainer = document.getElementById('piece-groups-container');
+
+            if (addPieceGroupBtn && pieceGroupsContainer) {
+                addPieceGroupBtn.addEventListener('click', function() {
+                    groupCounter++;
+                    const pieceGroupHtml = createPieceGroupHtml(groupCounter);
+                    pieceGroupsContainer.insertAdjacentHTML('beforeend', pieceGroupHtml);
+                });
+
+                // Event delegation for remove buttons
+                pieceGroupsContainer.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('remove-piece-group')) {
+                        e.target.closest('.piece-group').remove();
+                    }
+                });
+            }
+
+            function createPieceGroupHtml(groupNumber) {
+                return `
+                    <div class="piece-group mb-3">
+                        <div class="piece-row">
+                            <input type="number" name="piece_number_${groupNumber}" class="form-control" placeholder="#" style="max-width: 60px;">
+                            <input type="text" name="length_${groupNumber}" class="form-control" placeholder="Length">
+                            <input type="text" name="width_${groupNumber}" class="form-control" placeholder="Width">
+                            <input type="text" name="height_${groupNumber}" class="form-control" placeholder="Height">
+                            <input type="text" name="weight_${groupNumber}" class="form-control" placeholder="Weight">
+                            <div class="d-flex flex-column gap-1" style="min-width: 100px;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="weight_type_${groupNumber}" id="total_${groupNumber}" value="Total" checked>
+                                    <label class="form-check-label" for="total_${groupNumber}">Total</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="weight_type_${groupNumber}" id="per_item_${groupNumber}" value="Per Item">
+                                    <label class="form-check-label" for="per_item_${groupNumber}">Per Item</label>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-1" style="min-width: 100px;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="stackable_${groupNumber}" name="stackable_${groupNumber}" value="Yes">
+                                    <label class="form-check-label" for="stackable_${groupNumber}">Stackable</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="turnable_${groupNumber}" name="turnable_${groupNumber}" value="Yes">
+                                    <label class="form-check-label" for="turnable_${groupNumber}">Turnable</label>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger remove-piece-group" style="min-width: 90px;">
+                                <i class="fas fa-times me-1"></i>Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
