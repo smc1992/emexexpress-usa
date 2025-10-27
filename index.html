@@ -29,13 +29,6 @@
             border-radius: 12px;
         }
         
-        #step-1 .row.g-4 {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        
         /* Unit Toggle Buttons (cm/in, kg/lb) - FIX Button Höhe */
         .btn-group {
             height: 32px !important;
@@ -107,6 +100,30 @@
         
         .card.bg-light .text-primary {
             color: #2563eb !important;
+        }
+        
+        /* Remove Button Fix */
+        .remove-piece-group {
+            height: 38px !important;
+            line-height: 1 !important;
+            padding: 0.5rem 1rem !important;
+            white-space: nowrap !important;
+        }
+        
+        /* Form Controls */
+        .form-control {
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            color: #1e293b !important;
+        }
+        
+        .form-control:focus {
+            border-color: #2563eb !important;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+        }
+        
+        .form-control::placeholder {
+            color: #94a3b8 !important;
         }
         
         /* Mobile: Felder untereinander */
@@ -1938,11 +1955,13 @@
             });
 
             // Recalculate when piece groups are added/removed
-            pieceGroupsContainer.addEventListener('DOMNodeInserted', calculateShipment);
-            pieceGroupsContainer.addEventListener('DOMNodeRemoved', calculateShipment);
+            if (pieceGroupsContainer) {
+                const observer = new MutationObserver(calculateShipment);
+                observer.observe(pieceGroupsContainer, { childList: true, subtree: true });
+            }
 
             // Initial calculation
-            calculateShipment();
+            setTimeout(calculateShipment, 100);
         });
     </script>
 
