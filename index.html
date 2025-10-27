@@ -22,17 +22,36 @@
     
     <!-- Custom Styles for Piece Groups Mobile Optimization -->
     <style>
-        /* Section Booking Hintergrund dunkel wie cargo.one */
+        /* Section Booking Hintergrund weiß */
         #section-booking {
-            background-color: #2d3748 !important;
+            background-color: #ffffff !important;
             padding: 3rem 0 !important;
         }
         
-        /* Section Überschriften weiß auf dunklem Hintergrund */
+        /* Section Überschriften dunkel */
         #section-booking .subtitle,
         #section-booking h2,
         #section-booking p {
+            color: #1e293b !important;
+        }
+        
+        /* Step Indicators lesbar machen */
+        .step-indicator {
+            background-color: #e2e8f0 !important;
+            color: #64748b !important;
+            border: 2px solid #cbd5e1 !important;
+        }
+        
+        .step-indicator.active {
+            background-color: #2563eb !important;
             color: #ffffff !important;
+            border-color: #2563eb !important;
+        }
+        
+        .step-indicator.completed {
+            background-color: #10b981 !important;
+            color: #ffffff !important;
+            border-color: #10b981 !important;
         }
         
         /* Multi-Step Form Container - Weiße Box */
