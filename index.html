@@ -22,11 +22,91 @@
     
     <!-- Custom Styles for Piece Groups Mobile Optimization -->
     <style>
+        /* Formular Hintergrund hell (wie cargo.one) */
+        #step-1 {
+            background-color: #f5f7fa !important;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        #step-1 .row.g-4 {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        /* Unit Toggle Buttons (cm/in, kg/lb) - FIX Button Höhe */
+        .btn-group {
+            height: 32px !important;
+        }
+        
+        .btn-check:checked + .btn-outline-primary {
+            background-color: #2563eb !important;
+            border-color: #2563eb !important;
+            color: white !important;
+            height: 32px !important;
+            line-height: 1 !important;
+        }
+        
+        .btn-outline-primary {
+            border-color: #cbd5e1 !important;
+            color: #475569 !important;
+            background-color: #ffffff !important;
+            padding: 0.375rem 0.875rem !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+            transition: all 0.15s ease !important;
+            height: 32px !important;
+            line-height: 1 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #f1f5f9 !important;
+            border-color: #94a3b8 !important;
+            color: #1e293b !important;
+        }
+        
+        .btn-outline-primary:focus {
+            box-shadow: none !important;
+        }
+        
         /* Desktop: Felder nebeneinander */
         .piece-row {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+        
+        /* Calculation Card Styling */
+        .card.bg-light {
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+        }
+        
+        .card.bg-light .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .card.bg-light small {
+            color: #64748b !important;
+            font-size: 0.75rem !important;
+            font-weight: 500 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.025em !important;
+        }
+        
+        .card.bg-light strong {
+            color: #1e293b !important;
+            font-weight: 600 !important;
+        }
+        
+        .card.bg-light .text-primary {
+            color: #2563eb !important;
         }
         
         /* Mobile: Felder untereinander */
