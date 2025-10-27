@@ -1908,7 +1908,7 @@
             const IN_TO_CM = 2.54;
             const KG_TO_LB = 2.20462;
             const LB_TO_KG = 0.453592;
-            const VOLUMETRIC_DIVISOR = 6000; // Standard air freight: 1 cbm = 167 kg, so 1,000,000 cm³ / 6000 = 166.67 kg
+            const VOLUMETRIC_DIVISOR = 1000; // Cargo.one standard: 1,000,000 cm³ / 1000 = 1000 kg per m³
 
             let currentDimensionUnit = 'cm';
             let currentWeightUnit = 'kg';
@@ -2032,8 +2032,8 @@
                 // Chargeable weight is the higher of actual weight or volumetric weight
                 const chargeableWeightKg = Math.max(totalWeightKg, volumetricWeightKg);
 
-                // Calculate density ratio (actual weight : volumetric weight)
-                const densityRatio = volumetricWeightKg > 0 ? (totalWeightKg / volumetricWeightKg).toFixed(1) : 0;
+                // Calculate density ratio (volumetric weight : actual weight) - cargo.one format
+                const densityRatio = totalWeightKg > 0 ? (volumetricWeightKg / totalWeightKg).toFixed(1) : 0;
 
                 // Update display
                 document.getElementById('calc-total-pieces').textContent = totalPieces;
