@@ -54,6 +54,79 @@
             border-color: #10b981 !important;
         }
         
+        /* Modern Checkbox Styling with Checkmark */
+        #step-1 .form-check-input[type="checkbox"] {
+            width: 20px !important;
+            height: 20px !important;
+            border: 2px solid #cbd5e1 !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            background-color: #ffffff !important;
+        }
+        
+        #step-1 .form-check-input[type="checkbox"]:hover {
+            border-color: #2563eb !important;
+            background-color: #f0f7ff !important;
+        }
+        
+        #step-1 .form-check-input[type="checkbox"]:checked {
+            background-color: #2563eb !important;
+            border-color: #2563eb !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
+            background-size: 100% 100% !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        
+        #step-1 .form-check-input[type="checkbox"]:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+            border-color: #2563eb !important;
+        }
+        
+        #step-1 .form-check-label {
+            cursor: pointer !important;
+            user-select: none !important;
+            margin-left: 0.5rem !important;
+        }
+        
+        /* Button Styling Fix */
+        #step-1 .btn-main {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+            border: 2px solid #2563eb !important;
+            padding: 0.75rem 2rem !important;
+            font-weight: 600 !important;
+            border-radius: 8px !important;
+            transition: all 0.2s ease !important;
+            display: inline-block !important;
+            cursor: pointer !important;
+        }
+        
+        #step-1 .btn-main:hover {
+            background-color: #1d4ed8 !important;
+            border-color: #1d4ed8 !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+        }
+        
+        #step-1 .btn-main.btn-line {
+            background-color: transparent !important;
+            color: #2563eb !important;
+            border: 2px solid #2563eb !important;
+        }
+        
+        #step-1 .btn-main.btn-line:hover {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+        }
+        
+        .next-step, .prev-step, #add-piece-group {
+            display: inline-block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
         /* Multi-Step Form Container - Weiße Box */
         .multi-step-form {
             background-color: #ffffff !important;
@@ -1314,23 +1387,19 @@
                                                 <div class="card bg-light border-0">
                                                     <div class="card-body">
                                                         <div class="row g-3 text-center">
-                                                            <div class="col-6 col-md-2">
+                                                            <div class="col-6 col-md-3">
                                                                 <small class="text-muted d-block">Total No. of Pieces</small>
                                                                 <strong id="calc-total-pieces" class="fs-5">0</strong>
                                                             </div>
-                                                            <div class="col-6 col-md-2">
+                                                            <div class="col-6 col-md-3">
                                                                 <small class="text-muted d-block">Total Volume</small>
                                                                 <strong id="calc-total-volume" class="fs-5">0 m³</strong>
                                                             </div>
-                                                            <div class="col-6 col-md-2">
+                                                            <div class="col-6 col-md-3">
                                                                 <small class="text-muted d-block">Total Weight</small>
                                                                 <strong id="calc-total-weight" class="fs-5">0 kg</strong>
                                                             </div>
                                                             <div class="col-6 col-md-3">
-                                                                <small class="text-muted d-block">Density Ratio</small>
-                                                                <strong id="calc-density-ratio" class="fs-5">1 : 0</strong>
-                                                            </div>
-                                                            <div class="col-12 col-md-3">
                                                                 <small class="text-muted d-block">Chargeable Weight</small>
                                                                 <strong id="calc-chargeable-weight" class="fs-5 text-primary">0 kg</strong>
                                                             </div>
@@ -1908,7 +1977,7 @@
             const IN_TO_CM = 2.54;
             const KG_TO_LB = 2.20462;
             const LB_TO_KG = 0.453592;
-            const VOLUMETRIC_DIVISOR = 6000; // IATA standard for air freight: 1 CBM = 167 kg
+            const VOLUMETRIC_DIVISOR = 1625; // Cargo.one standard for density calculation
 
             let currentDimensionUnit = 'cm';
             let currentWeightUnit = 'kg';
@@ -2032,9 +2101,6 @@
                 // Chargeable weight is the higher of actual weight or volumetric weight
                 const chargeableWeightKg = Math.max(totalWeightKg, volumetricWeightKg);
 
-                // Calculate density ratio (volumetric weight : actual weight) - cargo.one format
-                const densityRatio = totalWeightKg > 0 ? (volumetricWeightKg / totalWeightKg).toFixed(1) : 0;
-
                 // Update display
                 document.getElementById('calc-total-pieces').textContent = totalPieces;
                 document.getElementById('calc-total-volume').textContent = totalVolumeM3.toFixed(3) + ' m³';
@@ -2047,8 +2113,6 @@
                     document.getElementById('calc-total-weight').textContent = (totalWeightKg * KG_TO_LB).toFixed(2) + ' lb';
                     document.getElementById('calc-chargeable-weight').textContent = (chargeableWeightKg * KG_TO_LB).toFixed(2) + ' lb';
                 }
-                
-                document.getElementById('calc-density-ratio').textContent = '1 : ' + densityRatio;
             }
 
             // Add event listeners to all inputs
