@@ -1801,6 +1801,40 @@
                 let isValid = true;
                 let firstInvalidField = null;
 
+                // Für Schritt 1: Zusätzliche Validierung für Piece Groups
+                if (currentStep === 1) {
+                    // Prüfe ob mindestens ein Piece Group teilweise ausgefüllt ist
+                    const pieceRows = document.querySelectorAll('.piece-row');
+                    let hasValidPieceGroup = false;
+                    
+                    pieceRows.forEach(row => {
+                        const pieces = parseFloat(row.querySelector('.piece-input')?.value) || 0;
+                        const length = parseFloat(row.querySelector('[placeholder="Length"]')?.value) || 0;
+                        const width = parseFloat(row.querySelector('[placeholder="Width"]')?.value) || 0;
+                        const height = parseFloat(row.querySelector('[placeholder="Height"]')?.value) || 0;
+                        const weight = parseFloat(row.querySelector('.weight-input')?.value) || 0;
+                        
+                        // Wenn mindestens eines der Felder ausgefüllt ist, gilt das Piece Group als "aktiv"
+                        if (pieces > 0 || length > 0 || width > 0 || height > 0 || weight > 0) {
+                            hasValidPieceGroup = true;
+                        }
+                    });
+                    
+                    if (!hasValidPieceGroup) {
+                        isValid = false;
+                        // Markiere das erste Piece Group Feld als ungültig
+                        const firstPieceInput = document.querySelector('.piece-input');
+                        if (firstPieceInput) {
+                            firstPieceInput.classList.add('is-invalid');
+                            const errorDiv = document.createElement('div');
+                            errorDiv.className = 'invalid-feedback';
+                            errorDiv.textContent = 'Please add at least one piece with dimensions and weight.';
+                            firstPieceInput.parentNode.appendChild(errorDiv);
+                            if (!firstInvalidField) firstInvalidField = firstPieceInput;
+                        }
+                    }
+                }
+
                 requiredFields.forEach(field => {
                     // Entferne vorherige Fehleranzeigen
                     field.classList.remove('is-invalid');
